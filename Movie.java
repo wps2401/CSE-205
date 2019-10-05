@@ -1,52 +1,75 @@
-// Assignment #: 4
-// Name: William Schuhmann
-// StudentID: 1215016803
-// Lecture: 10:30 T/Th
-// Description: Assignment 4 class displays a menu of choices to a user
-//        and performs the chosen task. It will keep asking a user to
-//        enter the next choice until the choice of 'Q' (Quit) is entered.
-public class Movie {
-private String movieTitle = "?";
-private int year = 0;
-private int length = 0;
-private Production prodCompany;
+package application;
+//Assignment #:6
+//Name: William Schuhmann
+//StudentID: 1215016803
+//Lecture: T/Th 10:30 am
+//Description: The class Movie represents a Movie.
 
-//Methods
-public String getMovieTitle() {
-	return movieTitle;
-}
-public int getYear() {
-	return year;
-}
-public int getLength() {
-	return length;
-}
-public Production getProdCompany(){
-	return prodCompany;
+public class Movie
+{
+private String movieTitle;
+private int year;
+private int length;
+private Review bookReview;
+
+//Constructor to initialize all member variables
+public Movie()
+{
+movieTitle = "?";
+length = 0;
+year = 0;
+bookReview = new Review();
 }
 
-
-public void setMovieTitle(String movieTitle) {
-	this.movieTitle = movieTitle;
-}
-public void setYear(int year) {
-	this.year = year; 
-}
-public void setLength(int length) {
-	this.length = length;
-}
-public void setProdCompany(String someName, String someCity, String someState) {
-	this.prodCompany = new Production();
-	this.prodCompany.setCompanyName(someName);
-	this.prodCompany.setLocationCity(someCity);
-	this.prodCompany.setLocationState(someState);
+//Accessor methods
+public String getMovieTitle()
+{
+return movieTitle;
 }
 
-//Output
-public String toString() {
-	return "Movie Title:\t\t" + this.getMovieTitle() 
-	      +"\nMovie Length:\t\t" + this.getLength() 
-	      +"\nMovie Year:\t\t"                    + this.getYear() + " \n" 
-	                                            +this.prodCompany.toString();
-}}
+public int getLength()
+{
+return length;
+}
 
+public int getYear()
+{
+return year;
+}
+
+public Review getReview()
+{
+return bookReview;
+}
+
+//Mutator methods
+public void setMovieTitle(String aTitle)
+{
+movieTitle = aTitle;
+}
+
+public void setLength(int aLength)
+{
+length = aLength;
+}
+
+public void setYear(int aYear)
+{
+year = aYear;
+}
+
+public void addRating(double rate)
+{
+bookReview.updateRating(rate);
+}
+
+//toString() method returns a string containg the information on the movie
+public String toString()
+{
+String result = "\nMovie Title:\t\t" + movieTitle
+         + "\nMovie Length:\t\t" + length
+         + "\nMovie Year:\t\t" + year
+         + "\n" + bookReview.toString() + "\n\n";
+return result;
+}
+}
